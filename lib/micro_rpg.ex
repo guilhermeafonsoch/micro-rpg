@@ -1,5 +1,6 @@
 defmodule MicroRpg do
   alias MicroRpg.{Game, Player}
+  alias MicroRpg.Game.Status
 
   @nome_adversario "TANJIRO"
 
@@ -9,6 +10,9 @@ defmodule MicroRpg do
 
   def start_game(player) do
     @nome_adversario |> create_player(:soco, :chute, :curar) |> Game.start(player)
+    
+    Status.print_round()
+  
   end
 
 end
