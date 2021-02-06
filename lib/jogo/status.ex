@@ -7,5 +7,9 @@ defmodule MicroRpg.Game.Status do
         IO.puts("-------------------------------------")
     end
 
+    def print_wrong_move_messege(move) do
+        IO.puts("\n ====== Invalid move: #{move} ======")
+    end
+
 
 end
