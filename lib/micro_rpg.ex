@@ -11,7 +11,7 @@ defmodule MicroRpg do
   def start_game(player) do
     @nome_adversario |> create_player(:soco, :chute, :curar) |> Game.start(player)
 
-    Status.print_round()
+    Status.print_round(Game.info())
 
   end
 
@@ -25,8 +25,9 @@ defmodule MicroRpg do
   
   defp do_move({:ok, move}) do
     case move do
-      :move_heal -> "Voce esta curado"
+      :move_heal -> Actions.heal()
       move -> Actions.attack(move)
     end
+    Status.print_round(Game.info())
   end
 end
