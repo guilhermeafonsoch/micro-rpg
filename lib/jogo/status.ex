@@ -11,5 +11,13 @@ defmodule MicroRpg.Game.Status do
         IO.puts("\n ====== Invalid move: #{move} ======")
     end
 
+    def print_move_message(:computer, :attack, damage) do
+        IO.puts("\n ====== Voce acabou de atacar o Tanjiro com um dano de #{damage} ======")
+    end
+
+    def print_move_message(:player, :attack, damage) do
+        IO.puts("\n ====== Tanjiro acabou de atacar o voce com um dano de #{damage} ======")
+    end
+
 
 end

@@ -25,12 +25,17 @@ defmodule MicroRpg.Game.Actions.Attack do
       opponent
       |> Game.fetch_player()
       |> Map.put(:life, life)
-      |> update_game(opponent)
+      |> update_game(opponent, damage)
     end
 
-    defp update_game(player, opponent) do
+    defp update_game(player, opponent, damage) do
       Game.info()
       |> Map.put(opponent, player)
       |> Game.update()
+    
+    Status.print_move_message(opponent, :attack, damage)
+
     end
+
+    
 end
