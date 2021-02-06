@@ -17,10 +17,18 @@ defmodule MicroRpg do
   end
 
   def make_move(move) do
-    move 
-    |> Actions.fetch_move() 
-    |> do_move() 
-    
+    Game.info()
+    |> Map.get(:status)
+    |> handle_status(move)
+  end
+
+  defp handle_status(:game_over, _move), do: Status.print_round(Game.info())
+
+  defp handle_status(_other, move) do
+    move
+    |> Actions.fetch_move()
+    |> do_move()
+
     computer_move(Game.info())
   end
 
