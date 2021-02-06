@@ -3,6 +3,7 @@ defmodule MicroRpg do
   alias MicroRpg.Game.{Actions, Status}
 
   @nome_adversario "TANJIRO"
+  @computer_moves [:move_avg, :move_rnd, :move_heal]
 
   def create_player(name, move_rnd,move_avg, move_heal) do
     Player.build(name, move_rnd,move_avg, move_heal)
@@ -16,9 +17,11 @@ defmodule MicroRpg do
   end
 
   def make_move(move) do
-    move |> Actions.fetch_move() |> do_move() 
+    move 
+    |> Actions.fetch_move() 
+    |> do_move() 
     
-
+    computer_move(Game.info())
   end
 
   defp do_move({:error, move}), do: Status.print_wrong_move_messege(move)
@@ -30,4 +33,12 @@ defmodule MicroRpg do
     end
     Status.print_round(Game.info())
   end
+
+  defp computer_move(%{turn: :computer, status: :continue}) do
+    move = {:ok, Enum.random(@computer_moves)}
+    do_move(move)
+  end
+
+  defp computer_move(_), do: :ok
+
 end
