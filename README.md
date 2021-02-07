@@ -1,4 +1,8 @@
+# Elixir Project
+![Badge](https://img.shields.io/static/v1?label=Elixir&message=Completed&color=blueviolet&style=for-the-badge)
+
 # MicroRpg
+Um sistema de RPG basico. Consiste em um usuario contra o computador com ambos com 100 de vida, tendo a possiblidade do usario atacar ou se curar ate que o jogo aacabe quando um dos dois atinja a vida 0.
 
 **TODO: Add description**
 
